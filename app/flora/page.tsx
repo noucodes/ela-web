@@ -30,7 +30,7 @@ const MENU_ITEMS = [
     desc: 'Hummus, tzatziki, dolmades, feta, warm pita & olives',
     tags: [{ label: 'Vegetarian' }, { label: 'Shareable' }],
     price: '$24',
-    img: 'https://images.unsplash.com/photo-1540189549336-e6e99ca3a3b3?w=200&q=80',
+    img: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=200&q=80',
     alt: 'Mezze',
   },
   {

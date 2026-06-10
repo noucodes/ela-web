@@ -28,7 +28,7 @@ const MENU_ITEMS = [
     name: 'Mezze Platter',
     desc: 'Hummus, tzatziki, dolmades, feta & grilled pita',
     price: '$24',
-    img: 'https://images.unsplash.com/photo-1540189549336-e6e99ca3a3b3?w=600&q=80',
+    img: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=600&q=80',
     alt: 'Mezze Platter',
   },
   {
