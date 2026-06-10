@@ -1,65 +1,113 @@
-import Image from "next/image";
+import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+    <main
+      style={{
+        minHeight: "100vh",
+        background: "#0a0a0a",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+        gap: "3rem",
+        padding: "2rem",
+        fontFamily: "sans-serif",
+      }}
+    >
+      <div style={{ textAlign: "center" }}>
+        <h1
+          style={{
+            fontSize: "clamp(3rem, 8vw, 6rem)",
+            fontWeight: 900,
+            color: "#fff",
+            letterSpacing: "0.4em",
+            marginBottom: "0.5rem",
+          }}
+        >
+          ELA
+        </h1>
+        <p
+          style={{
+            fontSize: "0.75rem",
+            letterSpacing: "0.3em",
+            textTransform: "uppercase",
+            color: "rgba(255,255,255,0.4)",
+          }}
+        >
+          Choose a theme to preview
+        </p>
+      </div>
+
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
+          gap: "1.5rem",
+          maxWidth: "660px",
+          width: "100%",
+        }}
+      >
+        <Link href="/ember" style={{ textDecoration: "none" }}>
+          <div
+            style={{
+              background: "#1c1919",
+              border: "1px solid rgba(201,165,87,0.3)",
+              padding: "2.5rem 2rem",
+              cursor: "pointer",
+            }}
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+            <div style={{ display: "flex", gap: "0.4rem", marginBottom: "1.5rem" }}>
+              {["#0f0d0d", "#c9a557", "#e4c870", "#8b2020"].map((c) => (
+                <span
+                  key={c}
+                  style={{
+                    width: 16, height: 16, borderRadius: "50%",
+                    background: c, border: "1px solid rgba(255,255,255,0.1)",
+                    flexShrink: 0,
+                  }}
+                />
+              ))}
+            </div>
+            <h2 style={{ fontSize: "1.4rem", fontWeight: 700, color: "#c9a557", letterSpacing: "0.2em", marginBottom: "0.5rem" }}>
+              Ember
+            </h2>
+            <p style={{ fontSize: "0.78rem", color: "rgba(255,255,255,0.4)", lineHeight: 1.6 }}>
+              Dark &amp; gold — elegant fine dining
+            </p>
+          </div>
+        </Link>
+
+        <Link href="/flora" style={{ textDecoration: "none" }}>
+          <div
+            style={{
+              background: "#f5f3ef",
+              border: "1px solid rgba(61,107,79,0.3)",
+              padding: "2.5rem 2rem",
+              cursor: "pointer",
+            }}
           >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+            <div style={{ display: "flex", gap: "0.4rem", marginBottom: "1.5rem" }}>
+              {["#faf8f4", "#3d6b4f", "#c4704f", "#1e2420"].map((c) => (
+                <span
+                  key={c}
+                  style={{
+                    width: 16, height: 16, borderRadius: "50%",
+                    background: c, border: "1px solid rgba(0,0,0,0.1)",
+                    flexShrink: 0,
+                  }}
+                />
+              ))}
+            </div>
+            <h2 style={{ fontSize: "1.4rem", fontWeight: 700, color: "#3d6b4f", letterSpacing: "0.2em", marginBottom: "0.5rem" }}>
+              Flora
+            </h2>
+            <p style={{ fontSize: "0.78rem", color: "#888880", lineHeight: 1.6 }}>
+              Light &amp; green — warm Mediterranean kitchen
+            </p>
+          </div>
+        </Link>
+      </div>
+    </main>
   );
 }

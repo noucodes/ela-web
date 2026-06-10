@@ -1,0 +1,832 @@
+/* ─── THEME VARIABLES ─────────────────────────────────────────── */
+.page {
+  --bg: #0f0d0d;
+  --surface: #1c1919;
+  --surface2: #242020;
+  --gold: #c9a557;
+  --gold-light: #e4c870;
+  --text: #f0ece6;
+  --muted: #7a7570;
+  --red: #8b2020;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-raleway), 'Raleway', sans-serif;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* ─── NAV ─────────────────────────────────────────────────────── */
+.nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.2rem 4rem;
+  background: rgba(15, 13, 13, 0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(201, 165, 87, 0.15);
+}
+
+.navLogo {
+  font-family: var(--font-playfair), serif;
+  font-size: 1.6rem;
+  color: var(--gold);
+  letter-spacing: 0.3em;
+  text-decoration: none;
+}
+
+.navLinks {
+  display: flex;
+  gap: 2.5rem;
+  list-style: none;
+}
+
+.navLinks a {
+  color: var(--text);
+  text-decoration: none;
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.navLinks a:hover {
+  color: var(--gold);
+}
+
+.navCta {
+  background: var(--gold);
+  color: #0f0d0d;
+  padding: 0.6rem 1.6rem;
+  border: none;
+  font-family: var(--font-raleway), sans-serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.3s;
+  display: inline-block;
+}
+
+.navCta:hover {
+  background: var(--gold-light);
+}
+
+/* ─── HERO ────────────────────────────────────────────────────── */
+.hero {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.heroOverlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(135deg, rgba(15, 13, 13, 0.75) 0%, rgba(139, 32, 32, 0.4) 100%),
+    linear-gradient(to bottom, transparent 60%, #0f0d0d);
+  z-index: 1;
+}
+
+.heroContent {
+  text-align: center;
+  z-index: 2;
+  padding: 2rem;
+  position: relative;
+}
+
+.heroTag {
+  font-size: 0.7rem;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1.5rem;
+}
+
+.heroTitle {
+  font-family: var(--font-playfair), serif;
+  font-size: clamp(4rem, 10vw, 9rem);
+  font-weight: 900;
+  line-height: 0.9;
+  margin-bottom: 2rem;
+}
+
+.heroTitleSub {
+  display: block;
+  color: var(--gold);
+  font-style: italic;
+  font-size: 0.5em;
+  font-weight: 400;
+}
+
+.heroSub {
+  font-size: 0.9rem;
+  letter-spacing: 0.15em;
+  color: rgba(240, 236, 230, 0.7);
+  margin-bottom: 3rem;
+}
+
+.heroBtns {
+  display: flex;
+  gap: 1.2rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btnPrimary {
+  background: var(--gold);
+  color: #0f0d0d;
+  padding: 1rem 2.5rem;
+  font-family: var(--font-raleway), sans-serif;
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.3s;
+  display: inline-block;
+}
+
+.btnPrimary:hover {
+  background: var(--gold-light);
+}
+
+.btnOutline {
+  background: transparent;
+  color: var(--text);
+  padding: 1rem 2.5rem;
+  font-family: var(--font-raleway), sans-serif;
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-weight: 500;
+  border: 1px solid rgba(240, 236, 230, 0.4);
+  cursor: pointer;
+  text-decoration: none;
+  transition: border-color 0.3s, color 0.3s;
+  display: inline-block;
+}
+
+.btnOutline:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+.heroScroll {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  z-index: 2;
+}
+
+.heroScroll span {
+  font-size: 0.6rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.scrollLine {
+  width: 1px;
+  height: 50px;
+  background: linear-gradient(to bottom, var(--gold), transparent);
+  animation: scrollDown 1.8s ease-in-out infinite;
+}
+
+@keyframes scrollDown {
+  0%   { transform: scaleY(0); transform-origin: top; }
+  50%  { transform: scaleY(1); transform-origin: top; }
+  100% { transform: scaleY(0); transform-origin: bottom; }
+}
+
+/* ─── SHARED ──────────────────────────────────────────────────── */
+.sectionTag {
+  font-size: 0.65rem;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1rem;
+}
+
+.sectionTitle {
+  font-family: var(--font-playfair), serif;
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+}
+
+.goldLine {
+  width: 60px;
+  height: 2px;
+  background: var(--gold);
+  margin: 1.5rem 0;
+}
+
+/* ─── ABOUT ───────────────────────────────────────────────────── */
+.about {
+  background: var(--surface);
+  padding: 8rem 4rem;
+}
+
+.aboutGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6rem;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.aboutText p {
+  color: rgba(240, 236, 230, 0.7);
+  line-height: 1.9;
+  margin-bottom: 1.5rem;
+  font-size: 0.95rem;
+}
+
+.aboutStats {
+  display: flex;
+  gap: 3rem;
+  margin-top: 2.5rem;
+}
+
+.stat {
+  text-align: center;
+}
+
+.statNum {
+  font-family: var(--font-playfair), serif;
+  font-size: 2.8rem;
+  color: var(--gold);
+  font-weight: 700;
+}
+
+.statLabel {
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.aboutImgWrap {
+  position: relative;
+}
+
+.aboutImgOverlay {
+  position: absolute;
+  bottom: -2rem;
+  left: -2rem;
+  width: 180px;
+  height: 180px;
+  background: var(--gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 1.5rem;
+}
+
+.aboutImgOverlay p {
+  font-family: var(--font-playfair), serif;
+  font-size: 0.85rem;
+  color: #0f0d0d;
+  font-style: italic;
+  line-height: 1.5;
+}
+
+/* ─── MENU ────────────────────────────────────────────────────── */
+.menu {
+  background: var(--bg);
+  padding: 8rem 4rem;
+}
+
+.menuHeader {
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto 4rem;
+}
+
+.menuHeaderGoldLine {
+  width: 60px;
+  height: 2px;
+  background: var(--gold);
+  margin: 1.5rem auto;
+}
+
+.menuMuted {
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.8;
+}
+
+.menuTabWrap {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 3.5rem;
+}
+
+.menuTabs {
+  display: inline-flex;
+  border: 1px solid rgba(201, 165, 87, 0.3);
+}
+
+.menuTab {
+  background: none;
+  border: none;
+  padding: 0.8rem 2rem;
+  color: var(--muted);
+  font-family: var(--font-raleway), sans-serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s;
+  border-right: 1px solid rgba(201, 165, 87, 0.3);
+}
+
+.menuTab:last-child {
+  border-right: none;
+}
+
+.menuTab:hover,
+.menuTabActive {
+  background: var(--gold);
+  color: #0f0d0d;
+}
+
+.menuGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.menuItem {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 1;
+  cursor: pointer;
+}
+
+.menuItem img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s;
+  filter: brightness(0.7);
+  display: block;
+}
+
+.menuItem:hover img {
+  transform: scale(1.08);
+  filter: brightness(0.5);
+}
+
+.menuOverlay {
+  position: absolute;
+  inset: 0;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.menuItemName {
+  font-family: var(--font-playfair), serif;
+  font-size: 1.3rem;
+  margin-bottom: 0.3rem;
+}
+
+.menuItemDesc {
+  font-size: 0.75rem;
+  color: rgba(240, 236, 230, 0.6);
+  margin-bottom: 0.8rem;
+}
+
+.menuItemPrice {
+  color: var(--gold);
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
+.menuAdd {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  background: var(--gold);
+  color: #0f0d0d;
+  border: none;
+  width: 40px;
+  height: 40px;
+  font-size: 1.3rem;
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: all 0.3s;
+  pointer-events: all;
+}
+
+.menuItem:hover .menuAdd {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.menuViewAll {
+  text-align: center;
+  margin-top: 3rem;
+}
+
+/* ─── DELIVERY ────────────────────────────────────────────────── */
+.delivery {
+  background: var(--surface);
+  padding: 8rem 4rem;
+}
+
+.deliveryInner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6rem;
+  align-items: center;
+}
+
+.deliveryMuted {
+  color: var(--muted);
+  line-height: 1.9;
+  font-size: 0.9rem;
+  margin-bottom: 2rem;
+}
+
+.deliveryFeatures {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-top: 2.5rem;
+}
+
+.deliveryFeature {
+  padding: 1.5rem;
+  background: var(--bg);
+  border-left: 3px solid var(--gold);
+}
+
+.deliveryFeature h4 {
+  font-family: var(--font-playfair), serif;
+  font-size: 1rem;
+  margin-bottom: 0.4rem;
+}
+
+.deliveryFeature p {
+  font-size: 0.8rem;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.deliveryApps {
+  margin-top: 2rem;
+}
+
+.deliveryAppsLabel {
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 1rem;
+}
+
+.appButtons {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.appBtn {
+  padding: 0.7rem 1.5rem;
+  background: var(--surface2);
+  border: 1px solid rgba(201, 165, 87, 0.3);
+  color: var(--text);
+  font-size: 0.75rem;
+  text-decoration: none;
+  transition: all 0.3s;
+  font-family: var(--font-raleway), sans-serif;
+}
+
+.appBtn:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+.deliveryVisual {
+  background: var(--bg);
+  padding: 3rem;
+  text-align: center;
+}
+
+.deliveryMapPlaceholder {
+  width: 100%;
+  height: 300px;
+  background: linear-gradient(135deg, #1c1919 0%, #242020 100%);
+  border: 1px solid rgba(201, 165, 87, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.deliveryMapPlaceholder span {
+  color: var(--muted);
+  font-size: 0.8rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.deliveryZoneNote {
+  color: var(--muted);
+  font-size: 0.75rem;
+  margin-top: 1rem;
+  letter-spacing: 0.1em;
+}
+
+/* ─── HOURS ───────────────────────────────────────────────────── */
+.hours {
+  background: var(--bg);
+  padding: 8rem 4rem;
+}
+
+.hoursInner {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.hoursHeader {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.hoursHeaderGoldLine {
+  width: 60px;
+  height: 2px;
+  background: var(--gold);
+  margin: 1.5rem auto;
+}
+
+.hoursGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+}
+
+.hoursCard {
+  background: var(--surface);
+  padding: 2.5rem;
+  text-align: center;
+}
+
+.hoursDay {
+  font-size: 0.65rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.8rem;
+}
+
+.hoursTime {
+  font-family: var(--font-playfair), serif;
+  font-size: 1.4rem;
+  margin-bottom: 0.3rem;
+}
+
+.hoursStatus {
+  display: inline-block;
+  padding: 0.2rem 0.8rem;
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.hoursOpen {
+  background: rgba(201, 165, 87, 0.15);
+  color: var(--gold);
+}
+
+.hoursClosed {
+  background: rgba(139, 32, 32, 0.15);
+  color: var(--red);
+}
+
+.hoursSpecial {
+  text-align: center;
+  padding: 2rem;
+  border: 1px solid rgba(201, 165, 87, 0.3);
+  max-width: 500px;
+  margin: 3rem auto 0;
+}
+
+.hoursSpecial h4 {
+  font-family: var(--font-playfair), serif;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  color: var(--gold);
+}
+
+.hoursSpecial p {
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.hoursNote {
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.75rem;
+  margin-top: 2rem;
+}
+
+/* ─── CONTACT ─────────────────────────────────────────────────── */
+.contact {
+  background: linear-gradient(135deg, rgba(139, 32, 32, 0.3) 0%, var(--surface) 100%);
+  padding: 8rem 4rem;
+}
+
+.contactInner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6rem;
+}
+
+.contactInfoItem {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+  margin-top: 2.5rem;
+}
+
+.contactInfoItem:first-child {
+  margin-top: 0;
+}
+
+.contactIcon {
+  width: 50px;
+  height: 50px;
+  background: rgba(201, 165, 87, 0.1);
+  border: 1px solid rgba(201, 165, 87, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+.contactInfoItem h4 {
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.4rem;
+}
+
+.contactInfoItem p,
+.contactInfoItem a {
+  color: var(--text);
+  font-size: 0.9rem;
+  text-decoration: none;
+  line-height: 1.6;
+}
+
+.contactMapHead {
+  font-family: var(--font-playfair), serif;
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  color: var(--gold);
+}
+
+.contactMapWrap {
+  overflow: hidden;
+  border: 1px solid rgba(201, 165, 87, 0.2);
+  border-radius: 4px;
+}
+
+.contactDirections {
+  display: inline-block;
+  margin-top: 1rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gold);
+  text-decoration: none;
+}
+
+/* ─── FOOTER ──────────────────────────────────────────────────── */
+.footer {
+  background: #080707;
+  padding: 3rem 4rem;
+}
+
+.footerInner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.footerLogo {
+  font-family: var(--font-playfair), serif;
+  font-size: 1.4rem;
+  color: var(--gold);
+  letter-spacing: 0.3em;
+}
+
+.footerLinks {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.footerLinks a {
+  color: var(--muted);
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.footerLinks a:hover {
+  color: var(--gold);
+}
+
+.footerSocial {
+  display: flex;
+  gap: 1rem;
+}
+
+.socialBtn {
+  width: 36px;
+  height: 36px;
+  border: 1px solid rgba(201, 165, 87, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--muted);
+  font-size: 0.8rem;
+  text-decoration: none;
+  transition: all 0.3s;
+}
+
+.socialBtn:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+.footerBottom {
+  text-align: center;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(201, 165, 87, 0.1);
+  color: var(--muted);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+}
+
+/* ─── RESPONSIVE ──────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .nav { padding: 1rem 1.5rem; }
+  .navLinks { display: none; }
+  .about,
+  .menu,
+  .delivery,
+  .hours,
+  .contact { padding: 5rem 1.5rem; }
+  .aboutGrid,
+  .deliveryInner,
+  .contactInner { grid-template-columns: 1fr; gap: 3rem; }
+  .menuGrid { grid-template-columns: repeat(2, 1fr); }
+  .hoursGrid { grid-template-columns: 1fr; }
+  .aboutImgOverlay { display: none; }
+  .footer { padding: 2rem 1.5rem; }
+  .footerInner { flex-direction: column; text-align: center; }
+}
