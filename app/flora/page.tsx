@@ -6,6 +6,14 @@ import Link from 'next/link'
 import { Cormorant_Garamond, DM_Sans } from 'next/font/google'
 import styles from './flora.module.css'
 
+const NAV_LINKS = [
+  { href: '#about', label: 'Our Story' },
+  { href: '#menu', label: 'Menu' },
+  { href: '#delivery', label: 'Order' },
+  { href: '#hours', label: 'Hours' },
+  { href: '#contact', label: 'Contact' },
+]
+
 const cormorant = Cormorant_Garamond({
   subsets: ['latin'],
   variable: '--font-cormorant',
@@ -82,12 +90,15 @@ const MENU_ITEMS = [
 
 export default function FloraPage() {
   const [activeCat, setActiveCat] = useState('All')
+  const [isDark, setIsDark] = useState(false)
+  const [menuOpen, setMenuOpen] = useState(false)
 
+  const closeMenu = () => setMenuOpen(false)
   const filtered =
     activeCat === 'All' ? MENU_ITEMS : MENU_ITEMS.filter((m) => m.cat === activeCat)
 
   return (
-    <div className={`${styles.page} ${cormorant.variable} ${dmSans.variable}`}>
+    <div className={`${styles.page} ${isDark ? styles.darkTheme : ''} ${cormorant.variable} ${dmSans.variable}`}>
 
       {/* ── NAV ── */}
       <nav className={styles.nav}>
@@ -95,14 +106,38 @@ export default function FloraPage() {
           ELA <span className={styles.navLogoAccent}>Kitchen</span>
         </Link>
         <ul className={styles.navLinks}>
-          <li><a href="#about">Our Story</a></li>
-          <li><a href="#menu">Menu</a></li>
-          <li><a href="#delivery">Order</a></li>
-          <li><a href="#hours">Hours</a></li>
-          <li><a href="#contact">Contact</a></li>
+          {NAV_LINKS.map(({ href, label }) => (
+            <li key={href}><a href={href}>{label}</a></li>
+          ))}
         </ul>
-        <a href="#contact" className={styles.navCta}>Book a Table</a>
+        <div className={styles.navRight}>
+          <button
+            className={styles.themeBtn}
+            onClick={() => setIsDark(v => !v)}
+            aria-label="Toggle theme"
+          >
+            {isDark ? '☀' : '☾'}
+          </button>
+          <a href="#contact" className={styles.navCta}>Book a Table</a>
+          <button
+            className={styles.hamburger}
+            onClick={() => setMenuOpen(v => !v)}
+            aria-label="Menu"
+          >
+            {menuOpen ? '✕' : '☰'}
+          </button>
+        </div>
       </nav>
+
+      {/* ── MOBILE NAV ── */}
+      {menuOpen && (
+        <div className={styles.mobileNav}>
+          {NAV_LINKS.map(({ href, label }) => (
+            <a key={href} href={href} onClick={closeMenu}>{label}</a>
+          ))}
+          <a href="#contact" className={styles.mobileNavCta} onClick={closeMenu}>Book a Table</a>
+        </div>
+      )}
 
       {/* ── HERO ── */}
       <section className={styles.hero} id="home">

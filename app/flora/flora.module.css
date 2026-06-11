@@ -1,4 +1,4 @@
-/* ─── THEME VARIABLES ─────────────────────────────────────────── */
+/* ─── LIGHT THEME (default) ───────────────────────────────────── */
 .page {
   --bg: #faf8f4;
   --white: #ffffff;
@@ -17,6 +17,50 @@
   min-height: 100vh;
 }
 
+/* ─── DARK THEME ──────────────────────────────────────────────── */
+.darkTheme {
+  --bg: #1a1f1c;
+  --white: #242e27;
+  --dark: #0e1510;
+  --text: #edeae4;
+  --muted: #888;
+  --border: rgba(255, 255, 255, 0.1);
+  background: var(--bg);
+  color: var(--text);
+}
+
+.darkTheme .nav {
+  background: rgba(26, 31, 28, 0.96);
+  border-bottom-color: rgba(255, 255, 255, 0.08);
+}
+
+.darkTheme .chefQuote {
+  background: rgba(61, 107, 79, 0.3);
+  border: 1px solid rgba(61, 107, 79, 0.4);
+}
+
+.darkTheme .deliveryVisual {
+  background: var(--dark);
+  border-color: var(--border);
+}
+
+.darkTheme .contactMapBox {
+  background: var(--dark);
+  border: 1px solid var(--border);
+}
+
+.darkTheme .contactMapBox h3 {
+  color: var(--text);
+}
+
+.darkTheme .hoursRow {
+  border-bottom-color: var(--border);
+}
+
+.darkTheme .menuCard {
+  background: var(--white);
+}
+
 /* ─── NAV ─────────────────────────────────────────────────────── */
 .nav {
   position: fixed;
@@ -26,10 +70,11 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1.5rem 5rem;
+  padding: 1.2rem 5rem;
   background: rgba(250, 248, 244, 0.95);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--border);
+  transition: background 0.3s, border-color 0.3s;
 }
 
 .navLogo {
@@ -64,6 +109,33 @@
   color: var(--green);
 }
 
+.navRight {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.themeBtn {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text);
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
+  flex-shrink: 0;
+  border-radius: 2px;
+}
+
+.themeBtn:hover {
+  border-color: var(--green);
+  color: var(--green);
+}
+
 .navCta {
   background: var(--green);
   color: white;
@@ -79,6 +151,72 @@
 
 .navCta:hover {
   background: var(--dark);
+}
+
+.hamburger {
+  display: none;
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text);
+  width: 36px;
+  height: 36px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
+  flex-shrink: 0;
+  border-radius: 2px;
+}
+
+.hamburger:hover {
+  border-color: var(--green);
+  color: var(--green);
+}
+
+/* ─── MOBILE NAV ──────────────────────────────────────────────── */
+.mobileNav {
+  position: fixed;
+  top: 64px;
+  left: 0;
+  right: 0;
+  background: var(--bg);
+  border-bottom: 3px solid var(--green);
+  z-index: 99;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+.darkTheme .mobileNav {
+  background: var(--dark);
+}
+
+.mobileNav a {
+  padding: 1rem 2rem;
+  color: var(--text);
+  text-decoration: none;
+  font-size: 0.88rem;
+  letter-spacing: 0.05em;
+  border-bottom: 1px solid var(--border);
+  transition: all 0.2s;
+}
+
+.mobileNav a:hover {
+  color: var(--green);
+  padding-left: 3rem;
+}
+
+.mobileNavCta {
+  background: var(--green) !important;
+  color: white !important;
+  text-align: center;
+  border-radius: 0 !important;
+}
+
+.mobileNavCta:hover {
+  background: var(--dark) !important;
+  padding-left: 2rem !important;
 }
 
 /* ─── HERO ────────────────────────────────────────────────────── */
@@ -843,22 +981,87 @@
   color: var(--green-light);
 }
 
-/* ─── RESPONSIVE ──────────────────────────────────────────────── */
+/* ─── TABLET (≤1024px) ────────────────────────────────────────── */
 @media (max-width: 1024px) {
   .nav { padding: 1rem 2rem; }
   .navLinks { display: none; }
+  .hamburger { display: flex; }
+  .navRight { gap: 0.6rem; }
+
   .hero { grid-template-columns: 1fr; }
-  .heroRight { height: 50vw; }
+  .heroLeft { padding: 5rem 2rem; }
+  .heroRight { height: 50vw; min-height: 300px; }
+
   .about,
   .menu,
   .delivery,
   .hours,
   .contact { padding: 5rem 2rem; }
-  .aboutInner,
-  .deliveryInner,
-  .hoursInner,
-  .contactInner { grid-template-columns: 1fr; gap: 3rem; }
+
+  .aboutInner { grid-template-columns: 1fr; gap: 3rem; }
+  .aboutImages { grid-template-columns: 1fr 1fr; }
+  .aboutImgMain { height: 220px; }
+  .aboutImgSub { height: 200px; }
+
+  .menuTop { flex-wrap: wrap; gap: 1.5rem; }
   .menuGrid { grid-template-columns: 1fr; }
+
+  .deliveryInner { grid-template-columns: 1fr; gap: 3rem; }
+  .hoursInner { grid-template-columns: 1fr; gap: 3rem; }
+  .contactInner { grid-template-columns: 1fr; gap: 3rem; }
+
   .footer { padding: 3rem 2rem 1.5rem; }
   .footerTop { grid-template-columns: 1fr 1fr; gap: 2rem; }
+}
+
+/* ─── MOBILE (≤700px) ─────────────────────────────────────────── */
+@media (max-width: 700px) {
+  .nav { padding: 1rem 1.5rem; }
+  .navCta { display: none; }
+
+  .hero { padding-top: 64px; }
+  .heroLeft { padding: 4rem 1.5rem; }
+  .heroRight { height: 60vw; }
+  .heroBtns { flex-direction: column; gap: 0.8rem; }
+  .heroBadges { gap: 1.5rem; flex-wrap: wrap; }
+
+  .about,
+  .menu,
+  .delivery,
+  .hours,
+  .contact { padding: 4rem 1.5rem; }
+
+  .aboutImages { grid-template-columns: 1fr; }
+  .aboutImgMain { grid-column: 1; height: 220px; }
+  .aboutImgSub { height: 180px; }
+
+  .menuTop { flex-direction: column; align-items: flex-start; }
+  .menuCats { flex-wrap: wrap; }
+
+  .menuCard { flex-direction: column; align-items: flex-start; }
+  .menuCardImgWrap { width: 100%; height: 180px; border-radius: 4px; }
+
+  .deliveryInfo { grid-template-columns: 1fr 1fr; }
+  .deliveryAppsRow { flex-direction: column; }
+
+  .hoursRow { flex-direction: column; align-items: flex-start; gap: 0.4rem; }
+
+  .contactInner { gap: 2.5rem; }
+
+  .footer { padding: 2.5rem 1.5rem 1rem; }
+  .footerTop { grid-template-columns: 1fr; gap: 2rem; }
+  .footerBottom { flex-direction: column; text-align: center; gap: 1rem; }
+}
+
+/* ─── PHONE (≤480px) ──────────────────────────────────────────── */
+@media (max-width: 480px) {
+  .heroTitle { font-size: clamp(2.5rem, 12vw, 4rem); }
+  .sectionTitle { font-size: clamp(2rem, 10vw, 3rem); }
+
+  .deliveryInfo { grid-template-columns: 1fr; }
+
+  .menuCats { gap: 0.3rem; }
+  .menuCat { padding: 0.4rem 0.9rem; font-size: 0.72rem; }
+
+  .footerTop { grid-template-columns: 1fr; }
 }
