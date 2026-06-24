@@ -1,5 +1,6 @@
 'use client'
 
+import { useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Oswald, Inter } from 'next/font/google'
@@ -26,8 +27,13 @@ const NAV_LINKS = [
 ]
 
 export default function AboutPage() {
+  const [isDark, setIsDark] = useState(false)
+  const [menuOpen, setMenuOpen] = useState(false)
+
+  const closeMenu = () => setMenuOpen(false)
+
   return (
-    <div className={`${styles.page} ${oswald.variable} ${inter.variable}`}>
+    <div className={`${styles.page} ${isDark ? styles.darkTheme : ''} ${oswald.variable} ${inter.variable}`}>
 
       {/* ── NAV ── */}
       <nav className={styles.nav}>
@@ -39,8 +45,35 @@ export default function AboutPage() {
             <li key={href}><Link href={href}>{label}</Link></li>
           ))}
         </ul>
-        <Link href="/#contact" className={styles.navCta}>Book a Table</Link>
+        <div className={styles.navRight}>
+          <span className={styles.navHours}>Mon–Sun · 6am – 5pm</span>
+          <button
+            className={styles.themeBtn}
+            onClick={() => setIsDark(v => !v)}
+            aria-label="Toggle theme"
+          >
+            {isDark ? '☀' : '☾'}
+          </button>
+          <Link href="/#contact" className={styles.navCta}>Book Now</Link>
+          <button
+            className={styles.hamburger}
+            onClick={() => setMenuOpen(v => !v)}
+            aria-label="Menu"
+          >
+            {menuOpen ? '✕' : '☰'}
+          </button>
+        </div>
       </nav>
+
+      {/* ── MOBILE NAV ── */}
+      {menuOpen && (
+        <div className={styles.mobileNav}>
+          {NAV_LINKS.map(({ href, label }) => (
+            <Link key={href} href={href} onClick={closeMenu}>{label}</Link>
+          ))}
+          <Link href="/#contact" className={styles.mobileNavCta} onClick={closeMenu}>Book Now</Link>
+        </div>
+      )}
 
       {/* ── HERO ── */}
       <div className={styles.hero}>
@@ -52,7 +85,7 @@ export default function AboutPage() {
             style={{ objectFit: 'cover', objectPosition: 'center' }}
             priority
           />
-          </div>
+        </div>
         <div className={styles.heroContent}>
           <p className={styles.heroEyebrow}>έλα — Greek for &ldquo;Come Here&rdquo;</p>
           <h1 className={styles.heroTitle}>
@@ -169,8 +202,8 @@ export default function AboutPage() {
       </section>
 
       {/* ── LEGACY ── */}
-      <section className={styles.story} style={{ background: '#0d0d0d' }}>
-        <div className={styles.storyInner}>
+      <section className={styles.legacy}>
+        <div className={styles.legacyInner}>
           <div className={styles.storyImageStack}>
             <div className={styles.storyImgMain}>
               <Image
@@ -198,23 +231,15 @@ export default function AboutPage() {
               embracing the future, ELA honours the past while creating new memories
               for generations to come.
             </p>
-            <div style={{ display: 'flex', gap: '3rem', marginTop: '2.5rem' }}>
+            <div style={{ display: 'flex', gap: '3rem', marginTop: '2.5rem', flexWrap: 'wrap' }}>
               {[
                 { label: 'Grandfather', sub: 'The dream begins' },
                 { label: "Nick's Father", sub: 'Homebush milk bar' },
                 { label: 'Nick & Family', sub: 'ELA Restaurant' },
               ].map(({ label, sub }) => (
                 <div key={label}>
-                  <div style={{
-                    fontFamily: 'var(--font-oswald)',
-                    fontSize: '0.85rem',
-                    fontWeight: 600,
-                    letterSpacing: '0.1em',
-                    textTransform: 'uppercase',
-                    color: '#c9a557',
-                    marginBottom: '0.3rem',
-                  }}>{label}</div>
-                  <div style={{ fontSize: '0.78rem', color: 'rgba(240,236,228,0.45)' }}>{sub}</div>
+                  <div className={styles.legacyGeneration}>{label}</div>
+                  <div className={styles.legacySub}>{sub}</div>
                 </div>
               ))}
             </div>
@@ -234,7 +259,7 @@ export default function AboutPage() {
           </p>
           <div className={styles.ctaButtons}>
             <Link href="/#contact" className={styles.btnGold}>Reserve a Table</Link>
-            <Link href="/" className={styles.btnOutline}>View Our Themes</Link>
+            <Link href="/#menu" className={styles.btnOutline}>View Menu</Link>
           </div>
         </div>
       </section>
