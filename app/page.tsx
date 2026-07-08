@@ -79,6 +79,7 @@ const FILTERS = ['All', 'Starters', 'Mains', 'Desserts']
 
 const NAV_LINKS = [
   { href: '/about', label: 'About' },
+  { href: '/blog', label: 'Blog' },
   { href: '#contact', label: 'Contact' },
 ]
 
@@ -432,6 +433,7 @@ export default function Home() {
             <h5>Explore</h5>
             <ul>
               <li><Link href="/about">About Us</Link></li>
+              <li><Link href="/blog">Blog</Link></li>
               <li><a href="#menu">Our Menu</a></li>
               <li><a href="#">Events</a></li>
               <li><a href="#">Catering</a></li>

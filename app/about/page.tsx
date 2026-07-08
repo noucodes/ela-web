@@ -23,6 +23,7 @@ const inter = Inter({
 const NAV_LINKS = [
   { href: '/', label: 'Home' },
   { href: '/#menu', label: 'Menu' },
+  { href: '/blog', label: 'Blog' },
   { href: '/#contact', label: 'Contact' },
 ]
 
@@ -272,6 +273,7 @@ export default function AboutPage() {
         <div className={styles.footerLinks}>
           <Link href="/">Home</Link>
           <Link href="/about">About</Link>
+          <Link href="/blog">Blog</Link>
           <Link href="/#menu">Menu</Link>
           <Link href="/#contact">Contact</Link>
         </div>
